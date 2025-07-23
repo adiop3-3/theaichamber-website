@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+ <!-- Favicon -->
+<link rel="icon" href="/my-favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="48x48" href="/my-favicon/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png">
+<link rel="manifest" href="/my-favicon/site.webmanifest">
+
+  <!-- ✅ ENHANCED SEO Meta Tags -->
+  <meta name="description" content="Browse all AI tools guides, automation tutorials, and business growth strategies from The AI Chamber. Expert insights on AI implementation, prompts, and workflow automation.">
+  <meta name="keywords" content="AI tools blog, automation tutorials, AI prompts guide, business AI implementation, AI workflow automation, content creation AI">
+  <meta name="author" content="The AI Chamber">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="All Posts - AI Tools & Automation Blog | The AI Chamber">
+  <meta property="og:description" content="Browse all expert insights on AI tools, automation, and business growth strategies. Complete archive of AI implementation guides.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theaichamber.com/all-posts.html">
+  <meta property="og:image" content="https://theaichamber.com/og-image.jpg">
+  <meta property="og:site_name" content="The AI Chamber">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@The_Ai_Chamber">
+  <meta name="twitter:title" content="All Posts - AI Tools & Automation Blog">
+  <meta name="twitter:description" content="Browse all expert insights on AI tools, automation, and business growth strategies.">
+  <meta name="twitter:image" content="https://theaichamber.com/twitter-image.jpg">
+  
+  <link rel="canonical" href="https://theaichamber.com/all-posts.html">
+  
+  <title>All Posts - AI Tools & Automation Blog | The AI Chamber</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ✅ ENHANCED NAVIGATION */
+    .nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 16px 40px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .nav-logo .accent {
+      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f59e0b;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(20px);
+    }
+
+    .back-btn:hover {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #f59e0b;
+    }
+
+    /* ENHANCED HEADER */
+    .header {
+      position: relative;
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+      padding: 140px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 10;
+    }
+
+    /* CLASSIER Floating gradient orbs */
+    .header::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      border-radius: 50%;
+      animation: elegantFloat 20s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      border-radius: 50%;
+      animation: elegantFloat 25s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+
+    @keyframes elegantFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 0.8;
+      }
+      25% {
+        transform: translateY(-15px) rotate(90deg) scale(1.02);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(-30px) rotate(180deg) scale(0.98);
+        opacity: 1;
+      }
+      75% {
+        transform: translateY(-15px) rotate(270deg) scale(1.01);
+        opacity: 0.9;
+      }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .page-title .accent {
+      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .blog-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ENHANCED SEARCH & FILTER SECTION */
+    .search-section {
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 25px 40px;
+      position: sticky;
+      top: 80px;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    #searchInput {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      width: 350px;
+      max-width: 100%;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    #searchInput:focus {
+      outline: none;
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+      background: rgba(245, 158, 11, 0.05);
+    }
+
+    #searchInput::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+      transform: translateY(-1px);
+    }
+
+    .clear-filters {
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .clear-filters:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .tag-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tag-filter {
+      padding: 6px 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 6px;
+      color: rgba(245, 158, 11, 0.8);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .tag-filter:hover, .tag-filter.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+      transform: translateY(-1px);
+    }
+
+    /* ENHANCED POSTS GRID */
+    .posts-section {
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .posts-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .posts-count {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+    }
+
+    .sort-options {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .sort-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .sort-select {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .sort-select:focus {
+      outline: none;
+      border-color: rgba(245, 158, 11, 0.5);
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    /* ENHANCED POST CARDS - SMOOTHER ANIMATIONS */
+    .post-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(30px);
+      backdrop-filter: blur(20px);
+      position: relative;
+    }
+
+    .post-card.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .post-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.05), transparent);
+      transition: left 0.8s ease;
+      z-index: 1;
+    }
+
+    .post-card:hover::before {
+      left: 100%;
+    }
+
+    .post-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(245, 158, 11, 0.3);
+      transform: translateY(-12px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .post-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .post-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.6s ease;
+    }
+
+    .post-card:hover .post-image {
+      transform: scale(1.08);
+    }
+
+    .post-category {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(245, 158, 11, 0.9);
+      color: #000000;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    .post-content {
+      padding: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .post-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-title:hover {
+      color: #f59e0b;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .post-date {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .post-read-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .post-excerpt {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .read-more {
+      color: #f59e0b;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .read-more:hover {
+      gap: 12px;
+      color: #fbbf24;
+    }
+
+    .post-engagement {
+      display: flex;
+      gap: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    .engagement-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* NO RESULTS */
+    .no-results {
+      text-align: center;
+      padding: 80px 20px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .no-results h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .no-results p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    /* LOADING */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      color: #f59e0b;
+      grid-column: 1 / -1;
+    }
+
+    .loading::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(245, 158, 11, 0.2);
+      border-top: 3px solid #f59e0b;
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ✅ ENHANCED FOOTER WITH LEGAL LINKS */
+    .footer {
+      background: #000000;
+      padding: 80px 40px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-section h4 {
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-section p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #f59e0b;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .footer-bottom a {
+      color: #f59e0b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: #fbbf24;
+    }
+
+    /* ✅ MOBILE OPTIMIZATION */
+    @media (max-width: 1024px) {
+      .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-header {
+        padding: 12px 20px;
+      }
+
+      .header {
+        padding: 120px 20px 40px;
+      }
+
+      .search-section {
+        padding: 20px 20px;
+        top: 60px;
+      }
+
+      .search-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      #searchInput {
+        width: 100%;
+      }
+
+      .posts-section {
+        padding: 60px 20px;
+      }
+
+      .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .posts-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .blog-stats {
+        gap: 24px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      z-index: 9999;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Enhanced Navigation -->
+  <nav class="nav-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        The <span class="accent">AI Chamber</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="back-btn">
+          ← Back to Home
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="page-title">All <span class="accent">Posts</span></h1>
+      <p class="page-subtitle">Comprehensive collection of AI tools guides, automation tutorials, and business growth strategies</p>
+      
+      <div class="blog-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="totalPosts">Loading...</span>
+          <span class="stat-label">Expert Articles</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Readers</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search & Filter Section -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-row">
+        <input type="text" id="searchInput" placeholder="Search articles, guides, tutorials..." aria-label="Search content">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Posts</button>
+          <button class="filter-btn" data-filter="recent">Recent</button>
+          <button class="filter-btn" data-filter="popular">Popular</button>
+          <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
+        </div>
+      </div>
+      <div class="tag-filters" id="tagFilters">
+        <!-- Tags will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts Section -->
+  <section class="posts-section">
+    <div class="posts-header">
+      <div class="posts-count" id="postsCount">Loading posts...</div>
+      <div class="sort-options">
+        <span class="sort-label">Sort by:</span>
+        <select class="sort-select" id="sortSelect">
+          <option value="date-desc">Newest First</option>
+          <option value="date-asc">Oldest First</option>
+          <option value="title-asc">Title A-Z</option>
+          <option value="title-desc">Title Z-A</option>
+          <option value="popular">Most Popular</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="posts-grid" id="postsGrid">
+      <div class="loading"></div>
+    </div>
+  </section>
+
+  <!-- ✅ ENHANCED FOOTER WITH LEGAL LINKS -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-main">
+        <div class="footer-section">
+          <h4>The AI Chamber</h4>
+          <p>Empowering businesses with intelligent automation and premium AI tools. Transform your workflow, scale your operations, and achieve remarkable growth with cutting-edge AI technology.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all-posts.html">All Posts</a></li>
+            <li><a href="https://theaichamber.gumroad.com/" target="_blank">Digital Store</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms & Conditions</a></li>
+            <li><a href="mailto:aditya@theaichamber.com">Support</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://x.com/The_Ai_Chamber" target="_blank">Twitter</a></li>
+            <li><a href="https://www.instagram.com/the_ai_chamber/" target="_blank">Instagram</a></li>
+            <li><a href="mailto:aditya@theaichamber.com">Email</a></li>
+            <li><a href="https://theaichamber.gumroad.com/" target="_blank">Gumroad</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 The AI Chamber — Empowering businesses with intelligent automation</p>
+        <p>⚡ Instant delivery | 💼 Business solutions | 🎯 Results-driven | 📍 Kota, Rajasthan</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="posts-data.js"></script>
+  
+  <script>
+    // Initialize AOS with smoother animations
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+
+    // Global variables
+    let allPosts = [];
+    let filteredPosts = [];
+    let currentPage = 1;
+    let postsPerPage = 9;
+    let activeFilters = new Set();
+    let currentSort = 'date-desc';
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for posts data to load
+      if (window.POSTS_DATA && window.POSTS_DATA.posts) {
+        allPosts = [...window.POSTS_DATA.posts];
+        filteredPosts = [...allPosts];
+        initializePage();
+      } else {
+        console.error('Posts data not loaded!');
+        showError();
+      }
+    });
+
+    function initializePage() {
+      createTagFilters();
+      renderPosts();
+      setupEventListeners();
+      updatePostsCount();
+    }
+
+    function showError() {
+      document.getElementById('postsGrid').innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
+          <h3 style="color: #ffffff; margin-bottom: 16px;">Unable to load posts</h3>
+          <p style="color: rgba(255,255,255,0.6);">Please refresh the page or check back later.</p>
+        </div>
+      `;
+    }
+
+    // Create tag filters
+    function createTagFilters() {
+      const allTags = window.POSTS_DATA.getAllTags();
+      const tagContainer = document.getElementById('tagFilters');
+      
+      tagContainer.innerHTML = allTags.map(tag => 
+        `<span class="tag-filter" onclick="toggleTagFilter('${tag}')">${tag}</span>`
+      ).join('');
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+      
+      searchInput.addEventListener('input', debounce(applyFilters, 300));
+      sortSelect.addEventListener('change', handleSortChange);
+      
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          applyFilters();
+        });
+      });
+
+      // Scroll progress indicator
+      window.addEventListener('scroll', updateScrollProgress);
+    }
+
+    // Debounce function for search
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Toggle tag filter
+    function toggleTagFilter(tag) {
+      const filterElement = event.target;
+      
+      if (activeFilters.has(tag)) {
+        activeFilters.delete(tag);
+        filterElement.classList.remove('active');
+      } else {
+        activeFilters.add(tag);
+        filterElement.classList.add('active');
+      }
+      
+      applyFilters();
+    }
+
+    // Apply filters
+    function applyFilters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      
+      filteredPosts = allPosts.filter(post => {
+        // Search filter
+        const matchesSearch = searchTerm === '' || 
+          post.title.toLowerCase().includes(searchTerm) ||
+          post.excerpt.toLowerCase().includes(searchTerm) ||
+          post.category.toLowerCase().includes(searchTerm) ||
+          post.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        
+        // Tag filter
+        const matchesTags = activeFilters.size === 0 || 
+          [...activeFilters].some(filter => post.tags.includes(filter));
+        
+        // Special filters
+        let matchesSpecial = true;
+        if (activeFilter === 'recent') {
+          const postDate = new Date(post.date);
+          const thirtyDaysAgo = new Date();
+          thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+          matchesSpecial = postDate >= thirtyDaysAgo;
+        } else if (activeFilter === 'popular') {
+          matchesSpecial = post.popularity >= 90;
+        }
+        
+        return matchesSearch && matchesTags && matchesSpecial;
+      });
+      
+      applySorting();
+      currentPage = 1;
+      renderPosts();
+      updatePostsCount();
+    }
+
+    // Handle sort change
+    function handleSortChange(e) {
+      currentSort = e.target.value;
+      applySorting();
+      renderPosts();
+    }
+
+    // Apply sorting
+    function applySorting() {
+      switch (currentSort) {
+        case 'date-desc':
+          filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+          break;
+        case 'date-asc':
+          filteredPosts.sort((a, b) => new Date(a.date) - new Date(b.date));
+          break;
+        case 'title-asc':
+          filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        case 'title-desc':
+          filteredPosts.sort((a, b) => b.title.localeCompare(a.title));
+          break;
+        case 'popular':
+          filteredPosts.sort((a, b) => b.popularity - a.popularity);
+          break;
+      }
+    }
+
+    // Render posts with pagination
+    function renderPosts() {
+      const grid = document.getElementById('postsGrid');
+      const startIndex = (currentPage - 1) * postsPerPage;
+      const endIndex = startIndex + postsPerPage;
+      const postsToShow = filteredPosts.slice(startIndex, endIndex);
+      
+      if (postsToShow.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1;">
+            <h3>No posts found</h3>
+            <p>Try adjusting your search terms or filters</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = postsToShow.map((post, index) => `
+        <article class="post-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+          <div class="post-image-container">
+            <img src="${post.previewImage}" alt="${post.title}" class="post-image" onclick="openPost(${post.id})" loading="lazy">
+            <div class="post-category">${post.category}</div>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title" onclick="openPost(${post.id})">${post.title}</h3>
+            <div class="post-meta">
+              <span class="post-date">📅 ${formatDate(post.date)}</span>
+              <span class="post-read-time">⏱️ ${post.readTime}</span>
+            </div>
+            <div class="post-tags">
+              ${post.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <p class="post-excerpt">${post.excerpt}</p>
+            <div class="post-footer">
+              <a href="#" class="read-more" onclick="openPost(${post.id}); return false;">
+                Read More →
+              </a>
+              <div class="post-engagement">
+                <span class="engagement-item">👁️ ${formatNumber(post.views)}</span>
+                <span class="engagement-item">❤️ ${formatNumber(post.likes)}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      AOS.refresh();
+    }
+
+    // Clear all filters
+    function clearAllFilters() {
+      document.getElementById('searchInput').value = '';
+      activeFilters.clear();
+      document.querySelectorAll('.tag-filter').forEach(filter => {
+        filter.classList.remove('active');
+      });
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+      
+      filteredPosts = [...allPosts];
+      applySorting();
+      currentPage = 1;
+      renderPosts();
+      updatePostsCount();
+    }
+
+    // Update posts count
+    function updatePostsCount() {
+      const count = filteredPosts.length;
+      const total = allPosts.length;
+      const countElement = document.getElementById('postsCount');
+      
+      if (count === total) {
+        countElement.textContent = `Showing all ${total} posts`;
+      } else {
+        countElement.textContent = `Showing ${count} of ${total} posts`;
+      }
+      
+      // Update total posts stat
+      document.getElementById('totalPosts').textContent = `${total}`;
+    }
+
+    // Utility functions
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    function formatNumber(num) {
+      if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+      }
+      return num.toString();
+    }
+
+    function openPost(postId) {
+      window.open(`post.html?id=${postId}`, '_blank');
+    }
+
+    // Scroll progress indicator
+    function updateScrollProgress() {
+      const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('scrollIndicator').style.width = scrolled + '%';
+    }
+  </script>
+</body>
+</html>

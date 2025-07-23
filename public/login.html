@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The AI Chamber</title>
+   <!-- Favicon -->
+<link rel="icon" href="/my-favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="48x48" href="/my-favicon/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png">
+<link rel="manifest" href="/my-favicon/site.webmanifest">
+
+
+
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Firebase Auth UI CSS -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundMove 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { 
+                background: 
+                    radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+            }
+            50% { 
+                background: 
+                    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+            }
+        }
+
+        /* Back button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .back-button:hover {
+            background: rgba(245, 158, 11, 0.12);
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Main container */
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+            backdrop-filter: blur(24px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .header .accent {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: #f59e0b;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(245, 158, 11, 0.2);
+            border-top: 3px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Firebase UI container */
+        #firebaseui-auth-container {
+            margin-top: 20px;
+        }
+
+        /* Clean Firebase UI styling - minimal interference */
+        .firebaseui-container {
+            background: transparent !important;
+            box-shadow: none !important;
+            color: #ffffff !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        .firebaseui-card-content {
+            background: transparent !important;
+            padding: 0 !important;
+        }
+
+        .firebaseui-title {
+            color: #ffffff !important;
+            font-size: 1.2rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+        }
+
+        .firebaseui-subtitle {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.9rem !important;
+            text-align: center !important;
+            margin-bottom: 20px !important;
+        }
+
+        .firebaseui-text {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: 0.9rem !important;
+        }
+
+        /* Form layout fixes */
+        .firebaseui-card-content {
+            background: transparent !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .firebaseui-form {
+            margin: 0 !important;
+        }
+
+        /* Email input styling */
+        .firebaseui-textfield {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-radius: 12px !important;
+            margin: 10px 0 20px 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .firebaseui-textfield:focus-within {
+            border-color: rgba(245, 158, 11, 0.5) !important;
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+        }
+
+        .firebaseui-input {
+            background: transparent !important;
+            color: #ffffff !important;
+            border: none !important;
+            padding: 16px 20px !important;
+            font-size: 16px !important;
+            font-family: 'Inter', sans-serif !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .firebaseui-input:focus {
+            outline: none !important;
+        }
+
+        .firebaseui-input::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        .firebaseui-label {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            margin-bottom: 8px !important;
+            display: block !important;
+        }
+
+        /* Button Container */
+        .firebaseui-form-actions {
+            display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    margin-top: 20px !important;
+        }
+
+        /* All buttons base styling */
+        .firebaseui-button {
+            flex: 1 !important;
+            min-width: 0 !important;
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            color: #000000 !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            padding: 14px 20px !important;
+            margin: 0 !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            font-family: 'Inter', sans-serif !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            box-sizing: border-box !important;
+        }
+
+        .firebaseui-button:hover {
+            background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+        }
+
+        .firebaseui-button:disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+        }
+
+        /* Secondary buttons (Cancel) */
+        .firebaseui-button-secondary {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        .firebaseui-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+        }
+
+        /* Specific button fixes */
+        .firebaseui-id-submit,
+        .firebaseui-id-secondary-link {
+            display: inline-block !important;
+            width: auto !important;
+            min-width: 100px !important;
+            text-align: center !important;
+        }
+
+        /* Fix for overlapping buttons */
+        .firebaseui-card-actions {
+            display: flex !important;
+            gap: 12px !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-top: 20px !important;
+        }
+
+        /* Individual button positioning */
+        .firebaseui-form-actions .firebaseui-button {
+            flex: 1 1 120px !important;
+    max-width: 48% !important;
+        }
+
+        /* Google button */
+        .firebaseui-idp-button {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            border-radius: 12px !important;
+            padding: 16px 24px !important;
+            margin: 12px 0 !important;
+            transition: all 0.3s ease !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        .firebaseui-idp-button:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .firebaseui-idp-text {
+            color: #ffffff !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+
+        .firebaseui-idp-icon {
+            margin-right: 12px !important;
+        }
+
+        /* Links */
+        .firebaseui-link {
+            color: #f59e0b !important;
+            text-decoration: none !important;
+            font-size: 0.9rem !important;
+        }
+
+        .firebaseui-link:hover {
+            color: #fbbf24 !important;
+            text-decoration: underline !important;
+        }
+
+        /* Messages */
+        .firebaseui-error {
+            background: rgba(239, 68, 68, 0.1) !important;
+            border: 1px solid rgba(239, 68, 68, 0.3) !important;
+            color: #ef4444 !important;
+            border-radius: 8px !important;
+            padding: 12px 16px !important;
+            margin: 12px 0 !important;
+            font-size: 0.9rem !important;
+        }
+
+        .firebaseui-info-bar {
+            background: rgba(34, 197, 94, 0.1) !important;
+            border: 1px solid rgba(34, 197, 94, 0.3) !important;
+            color: #22c55e !important;
+            border-radius: 8px !important;
+            padding: 12px 16px !important;
+            margin: 12px 0 !important;
+            font-size: 0.9rem !important;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .header .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .firebaseui-input {
+                font-size: 16px !important; /* Prevents zoom on iOS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button -->
+    <a href="/" class="back-button">← Back to Home</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>AI <span class="accent">Assistant</span></h1>
+            <p>Access your intelligent assistant</p>
+            <p class="subtitle">Sign in to continue to your AI-powered workspace</p>
+        </div>
+
+        <!-- Loading state -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Loading authentication...</p>
+        </div>
+
+        <!-- Firebase Auth UI Container -->
+        <div id="firebaseui-auth-container" style="display: none;"></div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAg1YqMGICDNgylo896-YOPFvNUueYfapA",
+            authDomain: "theaichamber-64c43.firebaseapp.com",
+            projectId: "theaichamber-64c43",
+            storageBucket: "theaichamber-64c43.firebasestorage.app",
+            messagingSenderId: "502017212713",
+            appId: "1:502017212713:web:c6b5a371421bca0bef7738",
+            measurementId: "G-JBKJEPZW2M"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        let authStateChecked = false;
+        let uiInitialized = false;
+
+        // Check authentication state
+        firebase.auth().onAuthStateChanged((user) => {
+            console.log('Auth state changed:', user ? 'User logged in' : 'No user');
+            
+            if (!authStateChecked) {
+                authStateChecked = true;
+                
+                if (user) {
+                    console.log('User is signed in:', user.email);
+                    // User is signed in, redirect to AI assistant
+                    window.location.replace('ai-assistant.html');
+                } else {
+                    console.log('No user signed in, showing login UI');
+                    // User is not signed in, show login form
+                    showLoginForm();
+                }
+            }
+        });
+
+        function showLoginForm() {
+            const loading = document.getElementById('loading');
+            const authContainer = document.getElementById('firebaseui-auth-container');
+            
+            // Hide loading, show auth container
+            loading.style.display = 'none';
+            authContainer.style.display = 'block';
+            
+            if (!uiInitialized) {
+                initializeAuthUI();
+                uiInitialized = true;
+            }
+        }
+
+        function initializeAuthUI() {
+            console.log('Initializing Firebase Auth UI...');
+            
+            // FirebaseUI Auth configuration
+            const uiConfig = {
+                signInSuccessUrl: 'ai-assistant.html',
+                signInOptions: [
+                    // Google Sign-In
+                    {
+                        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                        customParameters: {
+                            prompt: 'select_account'
+                        }
+                    },
+                    // Email Sign-In
+                    {
+                        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                        requireDisplayName: true
+                    }
+                ],
+                signInFlow: 'popup', // Use popup to avoid redirect issues
+                callbacks: {
+                    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                        console.log('Sign-in successful:', authResult.user.email);
+                        
+                        // Redirect to AI assistant
+                        window.location.replace('ai-assistant.html');
+                        
+                        // Return false to prevent automatic redirect
+                        return false;
+                    },
+                    signInFailure: function(error) {
+                        console.error('Sign-in failed:', error);
+                        
+                        // Show error message
+                        if (error.code !== 'firebaseui/anonymous-upgrade-merge-conflict') {
+                            console.error('Authentication error:', error);
+                        }
+                        
+                        return Promise.resolve();
+                    }
+                },
+                tosUrl: '/terms.html',
+                privacyPolicyUrl: '/privacy.html'
+            };
+
+            // Initialize the FirebaseUI Widget
+            const ui = new firebaseui.auth.AuthUI(firebase.auth());
+            
+            // Start the UI
+            ui.start('#firebaseui-auth-container', uiConfig);
+            
+            console.log('Firebase Auth UI initialized successfully');
+        }
+
+        // Add error handling for uncaught errors
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript error:', e.error);
+        });
+
+        // Add unhandled promise rejection handling
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+        });
+    </script>
+</body>
+</html>
